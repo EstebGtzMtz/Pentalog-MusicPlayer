@@ -1,3 +1,4 @@
+import SearchBarComponent from "../../components/SearchBar/SearchBarComponent";
 import MusicPlayerProvider from "../../context/MusicPlayerProvider"
 import { MainViewComponent } from "./MainView.styled"
 
@@ -6,14 +7,11 @@ const MainView = () => {
   return (
     <MusicPlayerProvider>
       <MainViewComponent>
-        <h1>que onda carnal</h1>
-        <ul>
-          <li>item 1</li>
-          <li>item 2</li>
-          <li>item 3</li>
-        </ul>
+        <div className="header">
+          <SearchBarComponent width={40} height={3} placeholder={'Search...'}/>
+        </div>
       </MainViewComponent>
-    </MusicPlayerProvider>
+    </MusicPlayerProvider>  
   )
 }
 

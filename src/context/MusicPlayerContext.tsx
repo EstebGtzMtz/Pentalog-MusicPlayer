@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
 
-export const MusicPlayerContext = createContext({})
+export const MusicPlayerContext = createContext({} as any)
