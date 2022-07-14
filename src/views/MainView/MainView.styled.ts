@@ -5,7 +5,7 @@ export const MainViewComponent = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items:center;
-	background-color: #282c34;
+	background-color: #000000;
 	width: 100%;
 	height: 100vh;
 `
