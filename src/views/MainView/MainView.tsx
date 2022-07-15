@@ -1,25 +1,22 @@
-import { useEffect } from "react";
+import { useContext } from "react";
+import ArtistCardComponent from "../../components/ArtistCard/ArtistCardComponent";
+import ArtistCardsContainer from "../../components/ArtistCardsContainer/ArtistCardsContainer";
 import SearchBarComponent from "../../components/SearchBar/SearchBarComponent";
-import { getArtistInfo } from "../../components/services/spotifyServices";
 import MusicPlayerProvider from "../../context/MusicPlayerProvider"
 import { MainViewComponent } from "./MainView.styled"
 
 
 const MainView = () => {
-
-  useEffect(() => {
-    obtainArtistInfo();
-  }, [])
   
-  const obtainArtistInfo = async()=>{
-    await getArtistInfo();
-  }
 
   return (
     <MusicPlayerProvider>
       <MainViewComponent>
         <div className="header">
-          <SearchBarComponent width={40} height={3} placeholder={'Search...'}/>
+            <SearchBarComponent width={40} height={3} placeholder={'Search...'}/> 
+        </div>
+        <div className="cards-container">
+          <ArtistCardsContainer />
         </div>
       </MainViewComponent>
     </MusicPlayerProvider>  
