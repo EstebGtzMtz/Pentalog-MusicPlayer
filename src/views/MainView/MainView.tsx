@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import ArtistCardComponent from "../../components/ArtistCard/ArtistCardComponent";
+
 import ArtistCardsContainer from "../../components/ArtistCardsContainer/ArtistCardsContainer";
 import SearchBarComponent from "../../components/SearchBar/SearchBarComponent";
 import MusicPlayerProvider from "../../context/MusicPlayerProvider"
@@ -7,8 +6,6 @@ import { MainViewComponent } from "./MainView.styled"
 
 
 const MainView = () => {
-  
-
   return (
     <MusicPlayerProvider>
       <MainViewComponent>

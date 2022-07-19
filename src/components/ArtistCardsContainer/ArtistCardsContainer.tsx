@@ -12,9 +12,9 @@ const ArtistCardsContainer = () => {
     <ArtitsCardsMainContainer>
 					{artistHistory !== undefined &&
             artistHistory.map((el:IResponseArtistInfo)=>{
-              const {id, name, images} = el;
+              const {id, name, images, backgroundColor} = el;
               return (
-                <ArtistCardComponent key={id} id={id} name={name} img={images[1]?.url} />
+                <ArtistCardComponent key={id} id={id} name={name} img={images[1]?.url} backgroundColor={backgroundColor}/>
               )
             })
           }
