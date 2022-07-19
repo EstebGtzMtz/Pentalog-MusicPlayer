@@ -9,6 +9,7 @@ const ArtistCardsContainer = () => {
 
   useEffect(() => {
     getHistoryFromStorage()
+    // eslint-disable-next-line
   }, [artistHistory])
   
   const [historyFromStorage, setHistoryFromStorage] = useState<IResponseArtistInfo[]>([])
