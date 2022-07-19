@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import MainView from './views/MainView/MainView';
+import { BrowserRouter } from 'react-router-dom'
+import Router from './Router';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+function WithContext(){
+  return (
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  )
+}
+
 root.render(
   <React.StrictMode>
-    <MainView/>
+    <WithContext />
   </React.StrictMode>
 );

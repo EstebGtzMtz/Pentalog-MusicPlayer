@@ -17,7 +17,7 @@ const SearchBarComponent:FunctionComponent<ISearchBarProps> = ({width, height, p
     e.preventDefault();
 		const response:IResponseArtistInfo = await getArtistInfo(searchBarInput);
 		if(response){
-			const newState = [...artistHistory,response];
+			const newState = [response, ...artistHistory];
 			setArtistHistory(newState);
 			setSearchBarInput('');
 		}

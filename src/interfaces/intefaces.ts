@@ -12,7 +12,7 @@ export interface ISearchBarProps{
 
 export interface IArtistCardProps{
     img?: string;
-    id?: number;
+    id: string;
     name?:string;
     backgroundColor?: string;
 }
@@ -23,4 +23,8 @@ export interface IBackgroundColors{
 
 export interface IResponseWrapper {
     response:IResponseArtistInfo
+}
+
+export interface IExternalSpotify{
+    spotify: string;
 }
