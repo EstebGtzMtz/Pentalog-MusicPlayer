@@ -9,4 +9,11 @@ export const MainViewComponent = styled.div`
 	.header{
 		padding: 4rem 4rem 2rem 4rem;
 	}
+	.cards-container{
+		padding: 4rem 4rem 2rem 4rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
 `

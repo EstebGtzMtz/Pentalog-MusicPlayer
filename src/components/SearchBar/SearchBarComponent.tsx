@@ -1,14 +1,26 @@
 import { FunctionComponent, useContext } from 'react'
 import { MusicPlayerContext } from '../../context/MusicPlayerContext'
 import { ISearchBarProps } from '../../interfaces/intefaces'
+import { IResponseArtistInfo } from '../../interfaces/responses'
+import { getArtistInfo } from '../../services/spotifyServices'
 import {SearchBarMainContainer} from './SearchBar.styled'
 
 const SearchBarComponent:FunctionComponent<ISearchBarProps> = ({width, height, placeholder}:ISearchBarProps) => {
 
-	const {searchBarInput, setSearchBarInput} = useContext(MusicPlayerContext)
+	const {
+		searchBarInput,setSearchBarInput,
+		artistHistory, setArtistHistory,
+		handleSearchBarInput
+		} = useContext(MusicPlayerContext);
 
-	const handleSearchBarInput = (value: string) =>{
-		setSearchBarInput(value)
+	const onSubmitGetArtist = async(e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+		const response:IResponseArtistInfo = await getArtistInfo(searchBarInput);
+		if(response){
+			const newState = [response, ...artistHistory];
+			setArtistHistory(newState);
+			setSearchBarInput('');
+		}
 	}
 
   return (
@@ -16,12 +28,14 @@ const SearchBarComponent:FunctionComponent<ISearchBarProps> = ({width, height, p
 			width={width} 
 			height={height} 
 		>
-        <input 
-					type="text" 
+			<form onSubmit={onSubmitGetArtist}>
+				<input 
+					type="text" 	
 					value={searchBarInput} 
 					onChange={(e)=>handleSearchBarInput(e.target.value)}
 					placeholder={placeholder}
 				/>
+			</form>
     </SearchBarMainContainer>
   )
 }
