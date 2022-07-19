@@ -11,6 +11,7 @@ const ArtistCardComponent:FunctionComponent<IArtistCardProps> = ({ id, name, img
     if(id !==undefined){
       setTopTracksState(id)
     }
+    // eslint-disable-next-line
   },[id])
 
   const [topTracks, setTopTracks] = useState<IResponseTracksInfo[]>([])

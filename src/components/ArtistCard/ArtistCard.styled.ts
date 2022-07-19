@@ -19,7 +19,7 @@ export const ArtistCardContainer = styled.div<IArtistCardProps>`
 			cursor:pointer;
 			img{
 				width:100%;
-				border-radius: 3rem;
+				border-radius: 2rem;
 			}
 		}
 	}
