@@ -2,8 +2,9 @@ import { FunctionComponent, useContext } from 'react'
 import { MusicPlayerContext } from '../../context/MusicPlayerContext'
 import { ISearchBarProps } from '../../interfaces/intefaces'
 import { IResponseArtistInfo } from '../../interfaces/responses'
+import { getAccesToken } from '../../services/AuthService'
 import { getArtistInfo } from '../../services/spotifyServices'
-import {SearchBarMainContainer} from './SearchBar.styled'
+import {SearchBarMainContainer} from './SearchBar.styled';
 
 const SearchBarComponent:FunctionComponent<ISearchBarProps> = ({width, height, placeholder}:ISearchBarProps) => {
 
@@ -11,16 +12,29 @@ const SearchBarComponent:FunctionComponent<ISearchBarProps> = ({width, height, p
 		searchBarInput,setSearchBarInput,
 		artistHistory, setArtistHistory,
 		handleSearchBarInput
-		} = useContext(MusicPlayerContext);
+	} = useContext(MusicPlayerContext);
+
+	
+
+	const setTokenInLS = async()=>{
+		const accesToken = await getAccesToken();
+		localStorage.setItem('accesToken', accesToken);
+  }
 
 	const onSubmitGetArtist = async(e:React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
-		const response:IResponseArtistInfo = await getArtistInfo(searchBarInput);
-		if(response){
-			const newState = [response, ...artistHistory];
-			setArtistHistory(newState);
-			setSearchBarInput('');
+		try {
+			const response:IResponseArtistInfo = await getArtistInfo(searchBarInput);
+			if(response){
+				const newState = [response, ...artistHistory];
+				setArtistHistory(newState);
+        localStorage.setItem('artistHistory', JSON.stringify(newState));
+				setSearchBarInput('');
+			}
+		} catch (error) {
+			setTokenInLS();
 		}
+		
 	}
 
   return (
