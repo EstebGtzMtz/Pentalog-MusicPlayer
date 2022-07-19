@@ -46,3 +46,11 @@ export interface IResponseTracksInfo{
 	preview_url?: string;
 	external_urls?: IExternalSpotify;
 }
+
+export interface IResponseTokenData{
+	data:IResponseAccesToken;
+}
+
+export interface IResponseAccesToken{
+	access_token: string;
+}

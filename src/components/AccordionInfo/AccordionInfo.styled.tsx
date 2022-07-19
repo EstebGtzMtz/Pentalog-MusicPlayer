@@ -7,4 +7,9 @@ export const TracklistInfoContainer = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     margin: 2rem 1rem;
+    .title-container{
+        display: flex;
+        width: 50%;
+        flex-direction: row:
+    }
 `

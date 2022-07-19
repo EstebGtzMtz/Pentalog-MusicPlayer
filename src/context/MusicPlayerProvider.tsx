@@ -3,6 +3,7 @@ import { IMusicPlayerProviderProps } from "../interfaces/intefaces";
 import { useState } from "react";
 import { IResponseArtistInfo } from "../interfaces/responses";
 import { getArtistTopTracks } from "../services/spotifyServices";
+import { getAccesToken } from "../services/AuthService";
 
 const MusicPlayerProvider = ({ children }: IMusicPlayerProviderProps) => {
 
@@ -13,9 +14,20 @@ const MusicPlayerProvider = ({ children }: IMusicPlayerProviderProps) => {
 		setSearchBarInput(value)
 	}
 
+  const setTokenInLS = async()=>{
+		const accesToken = await getAccesToken();
+		localStorage.setItem('accesToken', accesToken);
+  }
+
   const getTopTracks = async (id: string)=>{
-    const response = await getArtistTopTracks(id)
-		return response
+    try {
+      const response = await getArtistTopTracks(id)
+		  return response
+    } catch (error) {
+      console.log(error)
+      setTokenInLS();
+    }
+    
   }
 
   return (
